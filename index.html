@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>DATR</title>
+    <meta name="author" content="Tianbo Pan">
+    <meta name="description" content="Project page of SRFNet paper, ICRA 2024">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="eccv_logo.png">
+    <!-- Format -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="../format/app.css">
+    <link rel="stylesheet" href="../format/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="../format/app.js"></script>
+
+  </head>
+
+  <body style=“text-align: center;”>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                SRFNet: Monocular Depth Estimation with Fine-grained Structure via Spatial Reliability-oriented Fusion of Frames and Events<br /> 
+<!--                 <small>
+                    
+                </small> -->
+            </h1>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+			    <img src="./image/tianbo.jpg" height="80px"><br>
+                        <!-- <a href="https://zhengxujosh.github.io/" > -->
+                         Tianbo Pan
+                        </a>
+                        
+                        <br /> AI Thrust, HKUST(GZ)
+                        <br /> &nbsp &nbsp
+
+                    </li>
+
+                    <li>
+                        <a href="https://scholar.google.com/citations?user=q1FcZzIAAAAJ&hl=zh-CN" >
+                         Zidong Cao
+                        </a>
+                        <br /> AI Thrust, HKUST(GZ)
+                        <br /> &nbsp &nbsp
+
+                    </li>
+                  
+                    <li>
+			    <img src="./image/linwang.jpg" height="80px"><br>
+                        <a href="https://addisonwang2013.github.io/vlislab/linwang.html">
+                           Addison Lin Wang
+                        </a>
+                        <br /> AI Thrust, HKUST(GZ) 
+			    <br/> Dept. of CSE, HKUST 
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+	
+        <!-- ##### Elements #####-->
+        <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+			                <a href="https://arxiv.org/abs/2309.12842">
+                            <img src="./image/arxiv.png" height="100px"><br>
+                            <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+
+                            <img src="./image/youtube_icon.jpg" height="100px"><br>
+                                <h4><strong>Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- <a href="https://github.com/zhengxuJosh/DATR"> -->
+                            <img src="./image/github_icon.jpg" height="100px"><br>
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+
+                        <!-- <li>
+                            
+                            <img src="./image/colab_icon.jpg" height="100px"><br>
+                                <h4><strong>Colab</strong></h4>
+                            </a>
+                        </li> -->
+ 
+
+                        <li>
+                            <!-- <a href="https://github.com/haoai-1997/haoai-1997.github.io/blob/main/HRDFuse/CVPR2023_HRDFuse_supp.pdf"> -->
+                            <img src="./image/slide_icon.jpg" height="100px"><br>
+                                <h4><strong>Supp</strong></h4>
+                            </a>
+                        </li>                     
+                        <li>
+                            <a href="https://vlislab22.github.io/vlislab/">
+                            <img src="./image/lab_logo.png" height="100px"><br>
+                                <h4><strong>Vlislab</strong></h4>
+                            </a>
+                        </li>                       
+                      
+                    </ul>
+                </div>
+        </div>
+
+	    
+        <!-- ##### Abstract #####-->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    Monocular depth estimation is a crucial task to measure distance relative to a camera, which is important for applications, such as robot navigation and self-driving. Traditional frame-based methods suffer from performance drops due to the limited dynamic range and motion blur. Therefore, recent works leverage novel event cameras to complement or guide the frame modality via frame-event feature fusion. However, event streams exhibit spatial sparsity, leaving some areas unperceived, especially in regions with marginal light changes. Therefore, direct fusion methods, e.g., RAMNet, often ignore the contribution of the most confident regions of each modality. This leads to structural ambiguity in the modality fusion process, thus degrading the depth estimation performance. In this paper, we propose a novel Spatial Reliability-oriented Fusion Network (SRFNet), that can estimate depth with fine-grained structure at both daytime and nighttime. Our method consists of two key technical components. Firstly, we propose an attention-based interactive fusion (AIF) module that applies spatial priors of events and frames as the initial masks and learns the consensus regions to guide the inter-modal feature fusion. The fused feature are then fed back to enhance the frame and event feature learning. Meanwhile, it utilizes an output head to generate a fused mask, which is iteratively updated for learning consensual spatial priors. Secondly, we propose the Reliability-oriented Depth Refinement (RDR) module to estimate dense depth with the fine-grained structure based on the fused features and masks. We evaluate the effectiveness of our method on the synthetic and real-world datasets, which shows that, even without pretraining, our method outperforms the prior methods, e.g., RAMNet, especially in night scenes.
+                    <br>
+                    <br>
+                </p>
+            </div>
+        </div>
+	    
+        <!-- ##### Results #####-->
+
+     <div class="row">     
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Experimental Results
+            </h3>
+            <img src="./image/Experiment_result.PNG" class="img-responsive" alt="vis_res"  class="center" >
+      </div>           
+     
+    </div>
+
+   <!-- ##### BibTex #####-->
+        <hr>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    BibTeX
+                </h3>
+ 
+                <div class="row align-items-center">
+                    <div class="col py-3">
+                        <pre class="border">             
+<!-- @inproceedings{Zheng2023DATR,
+  title={SRFNet: Monocular Depth Estimation with Fine-grained Structure via Spatial Reliability-oriented Fusion of Frames and Events},
+  author={Tianbo Pan, Zidong Cao, Lin Wang},
+  booktitle = {IEEE International Conference on Computer Vision (ICCV)},
+  year={2023}
+} -->
+</pre>
+                    </div>
+                </div>
+              
+    
+          </div>
+          
+        </div>
+    </div>
+</body>
+</html>
